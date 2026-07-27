@@ -1,0 +1,58 @@
+{% load wagtailcore_tags lists_menu %}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Lists</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% menu_items page as items %}
+                {% for item in items %}
+                    {% with childs=item.specific.submenus %}
+                        <li class="nav-item {% if childs %} dropdown{% endif %}">
+                            <a
+                                {% if item.specific.page %}
+                                    href="{% pageurl item.specific.page %}"
+                                {% else %}
+                                    {% if item.specific.external_link %}
+                                        href="{{ item.specific.external_link }}"
+                                    {% endif %}
+                                {% endif %}
+                                class="nav-link 
+                                    {% if item.specific.page %}
+                                        {% pageurl item.specific.page as url %}
+                                        {% if url == request.path %} active {% endif %}
+                                    {% endif %}
+                                    {% if childs %} dropdown-toggle{% endif %}"
+                                {% if childs %} role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}
+                            >
+                                {{ item.title }}
+                            </a>
+                            {% if childs %}
+                                {% include 'lists/menus/sub_menu.html' %}
+                            {% endif %}
+                        </li>
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+            <form class="d-flex" role="search" action="{% slugurl 'pesquisa' %}">
+                <div class="searchbar p-2 d-flex flex-row align-items-stretch rounded-2">
+                    <input
+                        name="query"
+                        type="search"
+                        class="flex-1"
+                        placeholder="Pesquisar"
+                        aria-label="Pesquisar"
+                        {% if search_query %} value="{{ search_query }}" {% endif %}
+                    />
+                    <button class="btn" type="submit">
+                        <span class="visually-hidden">Search</span>
+                        <i data-lucide="search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,23 @@
+{% extends 'lists/list_base.html' %}
+
+{% block content %}
+    {% with items=search_results %}
+        {% if items %}
+            {% include 'lists/parts/contents_list_data.html' %}
+        {% else %}
+            {% if search_query %}
+                <div class="row">
+                    <div class="col-12 d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;">
+                        <i data-lucide="search" style="width: 64px; height: auto;"></i>
+                        <p class="mt-2 fw-bold">Nenhum resultado encontrado.</p>
+                    </div>
+                </div>
+            {% else %}
+                <form action="" method="get">
+                    <input type="text" name="query" />
+                    <button type="submit">Pesquisar</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endwith %}
+{% endblock %}

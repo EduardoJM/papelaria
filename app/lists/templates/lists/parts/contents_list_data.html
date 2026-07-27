@@ -1,0 +1,67 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="row">
+    {% if items %}
+        {% for item in items %}
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 pb-5">
+                <a href="{% pageurl item %}" class="text-decoration-none" title="{{ item.title }}">
+                    <div class="d-flex flex-column align-items-stretch">
+                        {% image item.specific.cover fill-425x600 as tmp_photo %}
+                        <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" />
+                        <span class="fw-medium text-truncate text-white">{{ item.title }}</span>
+                    </div>
+                </a>
+                {% with tags=item.specific.tags.all %}
+                    {% if tags %}
+                        <div class="d-flex flex-row align-items-center gap-2">
+                            {% for tag in tags %}
+                                <a class="text-decoration-none fw-medium" href="{% slugurl 'tags' %}?tag={{ tag }}">
+                                    #{{ tag }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12 d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;">
+            <i data-lucide="folder-open" style="width: 64px; height: auto;"></i>
+            <p class="mt-2 fw-bold">Nenhum item encontrado.</p>
+        </div>
+    {% endif %}
+
+    <div class="col-12 mb-5 d-flex flex-row align-items-center justify-content-center gap-2 pagination">
+        {% if items.has_previous %}
+            <a class="btn btn-sm" href="?page={{ items.previous_page_number }}">
+                <i data-lucide="chevron-left"></i>
+            </a>
+        {% else %}
+            <button type="button" class="btn btn-sm" disabled>
+                <i data-lucide="chevron-left"></i>
+            </button>
+        {% endif %}
+
+        {% for page_num in items.paginator.page_range %}
+            {% if page_num == items.number %}
+                <button type="button" class="btn btn-primary btn-sm" disabled>
+                    {{ page_num }}
+                </button>
+            {% else %}
+                <a class="btn btn-sm" href="?page={{ page_num }}">
+                    {{ page_num }}
+                </a>
+            {% endif %}
+        {% endfor %}
+
+        {% if items.has_next %}
+            <a class="btn btn-sm" href="?page={{ items.next_page_number }}">
+                <i data-lucide="chevron-right"></i>
+            </a>
+        {% else %}
+            <button type="button" class="btn btn-sm" disabled>
+                <i data-lucide="chevron-right"></i>
+            </button>
+        {% endif %}
+    </div>
+</div>

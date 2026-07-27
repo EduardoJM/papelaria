@@ -1,0 +1,42 @@
+networks:
+  cms:
+    driver: bridge
+
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data/
+    environment:
+      - TZ=America/Sao_Paulo
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - cms
+    healthcheck:
+      test: "pg_isready -U postgres -d postgres"
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  cms:
+    build: .
+    restart: always
+    ports:
+      - 8000:8000
+    networks:
+      - cms
+    volumes:
+      - ./app/core:/app/core
+      - ./app/lists:/app/lists
+      - ./media:/media
+    env_file:
+      .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db:

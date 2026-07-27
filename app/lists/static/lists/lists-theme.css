@@ -1,0 +1,19 @@
+body {
+    background-color: #020617;
+}
+nav.navbar {
+    background-color: #0f172b;
+}
+.searchbar {
+    background-color: #1e293c;
+}
+.searchbar input {
+    border: transparent;
+    background-color: transparent;
+    min-width: 0;
+    outline: none;
+}
+.pagination button[disabled]{
+    outline: none;
+    border: none;
+}

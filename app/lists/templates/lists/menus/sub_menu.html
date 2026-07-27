@@ -1,0 +1,23 @@
+{% load wagtailcore_tags %}
+<ul class="dropdown-menu">
+	{% for item in childs %}
+		<li>
+			<a
+				class="dropdown-item
+					{% if item.specific.page %}
+						{% pageurl item.specific.page as url %}
+						{% if url == request.path %} active {% endif %}
+					{% endif %}"
+				{% if item.specific.page %}
+					href="{% pageurl item.specific.page %}"
+				{% else %}
+					{% if item.specific.external_link %}
+						href="{{ item.specific.external_link }}"
+					{% endif %}
+				{% endif %}
+			>
+				{{ item.title }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>
