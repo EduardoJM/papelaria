@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="{% static 'bootstrap/bootstrap.css' %}" rel="stylesheet" />
     <link href="{% static 'lists/lists-theme.css' %}" rel="stylesheet" />
+    {% block extrastyles %}{% endblock %}
     {% include "wagtailseo/meta.html" %}
 </head>
 
@@ -25,5 +26,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>  <script>
         lucide.createIcons();
     </script>
+    {% block extrascripts %}{% endblock %}
 </body>
 </html>

@@ -1,6 +1,21 @@
 {% extends 'lists/list_base.html' %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% block extrastyles %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+{% endblock %}
+
+{% block extrascripts %}
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-12">
@@ -48,22 +63,52 @@
     </div>
     <div class="row mt-5">
         <div class="col-12">
-            <h2>Comentários</h2>
+            <h2 class="fs-3">Imagens</h2>
+            {% with images=page.images.all %}
+                {% if images %}
+                    <div class="row mb-5">
+                        {% for image in images %}
+                            {% image image.image original as raw_photo %}
+                            <a
+                                class="col-4 glightbox d-flex flex-column align-items-stretch mb-4"
+                                title="{{ image.caption }}"
+                                href="{{ raw_photo.url }}"
+                            >
+                                {% image image.image fill-426x240 as tmp_photo %}
+                                <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" />
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="col-12 d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;">
+                        <i data-lucide="images" style="width: 64px; height: auto;"></i>
+                        <p class="mt-2 fw-bold">Nenhuma imagem foi adicionada a esse item.</p>
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="col-12">
+            <h2 class="fs-3">Anotações</h2>
         </div>
 
         {% if comments %}
-            <div class="row">
+            <div class="row gap-4 mb-5">
                 {% for comment in comments %}
                     <div class="col-12">
-                        <h3>{{ comment.title }}</h3>
-                        {{ comment.specific.comment|richtext }}
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title fs-5">{{ comment.title }}</h3>
+                                {{ comment.specific.comment|richtext }}
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
             <div class="col-12 d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;">
                 <i data-lucide="messages-square" style="width: 64px; height: auto;"></i>
-                <p class="mt-2 fw-bold">Nenhum comentário foi feito sobre esse item.</p>
+                <p class="mt-2 fw-bold">Nenhuma anotação foi feita nesse item.</p>
             </div>
         {% endif %}
     </div>
