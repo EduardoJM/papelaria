@@ -13,9 +13,9 @@
                 </a>
                 {% with tags=item.specific.tags.all %}
                     {% if tags %}
-                        <div class="d-flex flex-row align-items-center gap-2">
+                        <div class="text-truncate">
                             {% for tag in tags %}
-                                <a class="text-decoration-none fw-medium" href="{% slugurl 'tags' %}?tag={{ tag }}">
+                                <a class="text-decoration-none fw-medium me-2" href="{% slugurl 'tags' %}?tag={{ tag }}">
                                     #{{ tag }}
                                 </a>
                             {% endfor %}
