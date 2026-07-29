@@ -30,7 +30,7 @@ def menu_logo(page: Page):
     if not specific.logo:
         return None
     
-    url = specific.logo.get_rendition('fill-300x100|jpegquality-60').url
+    url = specific.logo.get_rendition('fill-180x60').url
     return url
 
 @register.simple_tag
