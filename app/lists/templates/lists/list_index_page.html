@@ -1,5 +1,12 @@
 {% extends 'lists/list_base.html' %}
+{% load lists_utils %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">{% main_title page %}</h1>
+        </div>
+    </div>
+
     {% include 'lists/parts/contents_list_data.html' %}
 {% endblock %}

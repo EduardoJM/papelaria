@@ -1,6 +1,13 @@
 {% extends 'lists/list_base.html' %}
+{% load lists_utils %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">{% main_title page %}</h1>
+        </div>
+    </div>
+
     {% with items=search_results %}
         {% if items %}
             {% include 'lists/parts/contents_list_data.html' %}
@@ -14,8 +21,19 @@
                 </div>
             {% else %}
                 <form action="" method="get">
-                    <input type="text" name="query" />
-                    <button type="submit">Pesquisar</button>
+                    <div class="searchbar p-2 d-flex flex-row align-items-stretch rounded-2">
+                        <input
+                            name="query"
+                            type="search"
+                            class="flex-fill"
+                            placeholder="Pesquisar"
+                            aria-label="Pesquisar"
+                        />
+                        <button class="btn" type="submit">
+                            <span class="visually-hidden">Search</span>
+                            <i data-lucide="search"></i>
+                        </button>
+                    </div>
                 </form>
             {% endif %}
         {% endif %}

@@ -10,6 +10,19 @@ from wagtail.contrib.search_promotions.models import Query
 from wagtailseo.models import SeoMixin, SeoType, TwitterCard
 
 class ListIndexPage(Page):
+    main_title = models.CharField("Título Principal", max_length=150)
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        verbose_name="Logo"
+    )
+    
+    content_panels = Page.content_panels + [
+        "main_title", "logo"
+    ]
+
     def get_context(self, request):
         context = super().get_context(request)
         items = (
