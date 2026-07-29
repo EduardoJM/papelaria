@@ -4,6 +4,7 @@ import environ
 env = environ.Env(
     DEBUG=(bool, False),
     ALLOWED_HOSTS=(list, []),
+    CSRF_TRUSTED_ORIGINS=(list, None),
 )
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -14,6 +15,9 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+
+if env("CSRF_TRUSTED_ORIGINS"):
+    CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
 INSTALLED_APPS = [
     "lists",
