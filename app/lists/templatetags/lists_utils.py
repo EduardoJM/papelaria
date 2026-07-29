@@ -14,4 +14,3 @@ def main_title(page: Page):
         return None
     
     return specific.main_title
-

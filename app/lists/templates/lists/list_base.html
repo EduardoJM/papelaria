@@ -1,10 +1,11 @@
-{% load static %}
+{% load static wagtailcore_tags %}
+{% wagtail_site as current_site %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ page.title }} - {{ current_site.site_name }}</title>
     <link href="{% static 'bootstrap/bootstrap.css' %}" rel="stylesheet" />
     <link href="{% static 'lists/lists-theme.css' %}" rel="stylesheet" />
     {% block extrastyles %}{% endblock %}
@@ -13,7 +14,7 @@
 
 <body data-bs-theme="dark">
     {% include 'lists/menus/main_menu.html' %}
-    
+
     <div class="container pt-5">
         {% block content %}
         {% endblock %}

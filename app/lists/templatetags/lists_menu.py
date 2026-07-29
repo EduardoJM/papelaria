@@ -1,4 +1,5 @@
 from django import template
+from django.http import QueryDict
 from wagtail.models import Page
 from lists.models import MenuLink, ListIndexPage
 
@@ -31,3 +32,17 @@ def menu_logo(page: Page):
     
     url = specific.logo.get_rendition('fill-300x100|jpegquality-60').url
     return url
+
+@register.simple_tag
+def is_url_equals(request, url, extra):
+    if request.path != url:
+        return False
+    if not extra:
+        return True
+    
+    extra = extra.replace('?', '')
+    q = QueryDict(extra)
+    if q != request.GET:
+        return False
+
+    return True

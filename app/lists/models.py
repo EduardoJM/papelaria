@@ -199,9 +199,10 @@ class MenuLink(Page):
         null=True,
         related_name='links'
     )
+    page_extra = models.CharField("Extra URL", max_length=250, blank=True, default="")
     external_link = models.URLField("Link Externo", blank=True, null=True)
 
-    content_panels = Page.content_panels + ["page", "external_link"]
+    content_panels = Page.content_panels + ["page", "page_extra", "external_link"]
 
     @property
     def submenus(self):

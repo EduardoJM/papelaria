@@ -18,7 +18,7 @@
                         <li class="nav-item {% if childs %} dropdown{% endif %}">
                             <a
                                 {% if item.specific.page %}
-                                    href="{% pageurl item.specific.page %}"
+                                    href="{% pageurl item.specific.page %}{{ item.specific.page_extra }}"
                                 {% else %}
                                     {% if item.specific.external_link %}
                                         href="{{ item.specific.external_link }}"
@@ -27,7 +27,8 @@
                                 class="nav-link fw-medium 
                                     {% if item.specific.page %}
                                         {% pageurl item.specific.page as url %}
-                                        {% if url == request.path %} active {% endif %}
+                                        {% is_url_equals request url item.specific.page_extra as equals %}
+                                        {% if equals %} active {% endif %}
                                     {% endif %}
                                     {% if childs %} dropdown-toggle{% endif %}"
                                 {% if childs %} role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}
