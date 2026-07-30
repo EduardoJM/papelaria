@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.gradient {
+  background: linear-gradient(90deg, #724ee7 0%, #6f4de6 100%);
+}
+header {
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+header .btn-cta {
+  font-weight: 500;
+  --bs-btn-bg: #fff;
+  --bs-btn-hover-bg: #ddd;
+  --bs-btn-active-bg: #ccc;
+}
+.header-image {
+  width: 500px;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .header-image {
+    width: 100%;
+    max-width: 80%;
+    height: auto;
+  }
+}
+.body {
+  background-color: #fff;
+}
+footer {
+  background-color: #000;
+  color: #fff;
+}
+footer .subfooter {
+  background-color: #222;
+}
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links li {
+  margin: 0;
+  padding: 0;
+}
+.footer-links li a {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.footer-links li a svg {
+  width: 32px;
+  height: 32px;
+}
+.bg-colored {
+  background-color: #724ee7;
+  color: #fff;
+}
+.contact-fake-btn-link {
+  transition: transform ease 0.3s;
+  transform: none;
+}
+.contact-fake-btn-link:hover {
+  transform: translate3d(0, -12px, -12px);
+}
+.contact-fake-btn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+.contact-fake-btn svg {
+  width: 48px;
+  height: 48px;
+}
+.contact-fake-btn-link:hover .contact-fake-btn {
+  background-color: rgba(255, 255, 255, 0.3);
+}

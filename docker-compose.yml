@@ -31,6 +31,7 @@ services:
     volumes:
       - ./app/core:/app/core
       - ./app/lists:/app/lists
+      - ./app/sites:/app/sites
       - ./media:/media
     env_file:
       .env
