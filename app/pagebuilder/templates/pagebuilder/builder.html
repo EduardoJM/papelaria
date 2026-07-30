@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.22.8/grapes.min.js"></script>
+<script src="https://unpkg.com/grapesjs-preset-webpage"></script>
+<script src="https://unpkg.com/grapesjs-blocks-basic@1.0.1"></script>
+
+<div id="gjs"></div>
+
+<script type="text/javascript">
+  var editor = grapesjs.init({
+    container: '#gjs',
+    components: '<div class="txt-red">Hello world!</div>',
+    plugins: [
+        'gjs-blocks-basic',
+        'grapesjs-preset-webpage'
+    ],
+    pluginsOpts: {
+        'gjs-blocks-basic': { flexGrid: true },
+        'grapesjs-preset-webpage': {
+            // options
+        }
+    }
+  });
+
+    editor.on('update', () => {
+        const html = editor.getHtml();
+        const css = editor.getCss();
+        const content = `<style>${css}</style>${html}`;
+
+        console.log(content);
+    }
+</script>
+<style>
+    .w-tabs[data-w-tabs-active-panel-id-value="tab-builder"] .tab-content {
+        padding: 0 !important;
+    }
+    .w-tabs[data-w-tabs-active-panel-id-value="tab-builder"] .w-tabs__wrapper {
+        margin-bottom: 0;
+    }
+    .w-tabs[data-w-tabs-active-panel-id-value="tab-builder"] .w-form-width {
+        max-width: 100%;
+    }
+    aside[aria-label="Minimapa"] {
+        display: none;
+    }
+</style>

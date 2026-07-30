@@ -21,6 +21,8 @@ if env("CSRF_TRUSTED_ORIGINS"):
 
 INSTALLED_APPS = [
     "lists",
+    "pagebuilder",
+    
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
