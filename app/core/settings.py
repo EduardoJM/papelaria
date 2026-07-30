@@ -20,6 +20,7 @@ if env("CSRF_TRUSTED_ORIGINS"):
     CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
 INSTALLED_APPS = [
+    "sites.ardoli",
     "lists",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
