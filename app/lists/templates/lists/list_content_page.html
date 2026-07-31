@@ -21,16 +21,16 @@
         <div class="col-12">
             <h1 class="mb-4">{{ page.title }}</h1>
         </div>
-        <div class="col-3 d-flex flex-column align-items-stretch">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3 d-flex flex-column align-items-stretch">
             {% image page.cover fill-425x600 as tmp_photo %}
-            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" />
+            <img class="mb-4" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" />
         </div>
-        <div class="col-9">
+        <div class="col-12 col-md-7 col-lg-8 col-xl-9">
             {% with tags=page.tags.all %}
                 {% if tags %}
-                    <div class="d-flex flex-row align-items-center gap-2 mb-2">
+                    <div class="mb-2">
                         {% for tag in tags %}
-                            <a class="text-decoration-none fw-medium" href="{% slugurl 'tags' %}?tag={{ tag }}">
+                            <a class="text-decoration-none fw-medium me-2" href="{% slugurl 'tags' %}?tag={{ tag }}">
                                 #{{ tag }}
                             </a>
                         {% endfor %}
@@ -40,24 +40,28 @@
             <div>
                 {{ page.description|richtext }}
             </div>
+        </div>
+        <div class="col-12">
             {% with properties=page.properties.all %}
-                {% if properties %}
-                    <table class="table table-striped table-bordered" width="100%">
-                        <thead>
+                <table class="table table-striped table-bordered" width="100%">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Mais Informações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th width="30%" scope="row">Data</th>
+                            <td>{{ page.date }}</td>
+                        </tr>
+                        {% for prop in properties %}
                             <tr>
-                                <th colspan="2">Mais Informações</th>
+                                <th width="30%" scope="row">{{ prop.name }}</th>
+                                <td>{{ prop.value }}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {% for prop in properties %}
-                                <tr>
-                                    <th width="30%" scope="row">{{ prop.name }}</th>
-                                    <td>{{ prop.value }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% endwith %}
         </div>
     </div>
@@ -70,7 +74,7 @@
                         {% for image in images %}
                             {% image image.image original as raw_photo %}
                             <a
-                                class="col-4 glightbox d-flex flex-column align-items-stretch mb-4"
+                                class="col-12 col-md-6 col-lg-4 glightbox d-flex flex-column align-items-stretch mb-4"
                                 title="{{ image.caption }}"
                                 href="{{ raw_photo.url }}"
                             >
