@@ -3,10 +3,13 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-12">
-            <h1 class="mb-4">{% main_title page %}</h1>
+        <div class="col-12 d-flex align-items-center">
+            <h1 class="mb-4 flex-fill">{% main_title page %}</h1>
+            {% include 'lists/parts/filters-button.html' %}
         </div>
     </div>
+
+    {% include 'lists/parts/filters.html' %}
 
     {% include 'lists/parts/contents_list_data.html' %}
 {% endblock %}

@@ -20,3 +20,24 @@ nav.navbar {
 footer {
     background-color: #0f172b;
 }
+#collapseFilters > div {
+    background-color: #0f172b;
+}
+.filters-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+@media (max-width: 992px) {
+    .filters-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .filters-bar {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.filters-bar select {
+    background-color: #1e293c;
+}

@@ -1,3 +1,4 @@
+import django_filters
 from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from modelcluster.fields import ParentalKey
@@ -8,6 +9,41 @@ from wagtail.fields import RichTextField
 from wagtail.search import index
 from wagtail.contrib.search_promotions.models import Query
 from wagtailseo.models import SeoMixin, SeoType, TwitterCard
+from django.utils.text import slugify
+from .filters import ListContentPageDisplayLabelFilter, PropertyFilter
+
+def generate_filters(page: Page, request):
+    properties_qs = (
+        ListContentPageProperties.objects
+        .select_related('page')
+        .filter(page_id__in=models.Subquery(
+            ListContentPage.objects
+            .descendant_of(page)
+            .live()
+            .values('id')
+        ))
+        .distinct()
+    )
+    properties = properties_qs.order_by('name').values_list('name', flat=True)
+
+    qs = ListContentPage.objects.descendant_of(page).live().order_by('-date')
+    filter = django_filters.FilterSet(request.GET, queryset=qs)
+    filter.filters['display_label'] = ListContentPageDisplayLabelFilter(
+        page=page,
+        label='Status',
+        field_name='display_label',
+        lookup_expr='exact'
+    )
+
+    for prop in properties:
+        id = slugify(prop)
+        filter.filters[id] = PropertyFilter(
+            label=prop,
+            property=prop,
+            page=page,
+        )
+    
+    return filter
 
 class ListIndexPage(Page):
     main_title = models.CharField("Título Principal", max_length=150)
@@ -25,14 +61,11 @@ class ListIndexPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        items = (
-            self.get_children()
-            .type(ListContentPage)
-            .live()
-            .order_by('-listcontentpage__date')
-        )
+
+        filter = generate_filters(self, request)
+        context['filter'] = filter
         
-        paginator = Paginator(items, 12)
+        paginator = Paginator(filter.qs, 12)
         page = request.GET.get('page')
         try:
             items = paginator.page(page)
@@ -61,7 +94,7 @@ class ListContentPage(SeoMixin, Page):
         on_delete=models.PROTECT,
         verbose_name="Capa"
     )
-    display_label = models.CharField("Label de Visualização", blank=True, default="")
+    display_label = models.CharField("Status", blank=True, default="")
     tags = ClusterTaggableManager(
         through=ListContentPageTag,
         blank=True,
