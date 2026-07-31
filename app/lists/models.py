@@ -29,7 +29,7 @@ class ListIndexPage(Page):
             self.get_children()
             .type(ListContentPage)
             .live()
-            .order_by('-first_published_at')
+            .order_by('-listcontentpage__date')
         )
         
         paginator = Paginator(items, 12)
@@ -92,7 +92,7 @@ class ListContentPage(SeoMixin, Page):
             self.get_children()
             .type(ListContentCommentPage)
             .live()
-            .order_by('-first_published_at')
+            .order_by('-listcontentpage__date')
         )
         context['comments'] = comments
         return context
@@ -168,7 +168,7 @@ class ListTagContentsPage(Page):
                 .type(ListContentPage)
                 .live()
                 .filter(listcontentpage__tags__name=tag)
-                .order_by('-first_published_at')
+                .order_by('-listcontentpage__date')
             )
 
             paginator = Paginator(items, 12)
