@@ -61,6 +61,7 @@ class ListContentPage(SeoMixin, Page):
         on_delete=models.PROTECT,
         verbose_name="Capa"
     )
+    display_label = models.CharField("Label de Visualização", blank=True, default="")
     tags = ClusterTaggableManager(
         through=ListContentPageTag,
         blank=True,
@@ -71,6 +72,7 @@ class ListContentPage(SeoMixin, Page):
         "date",
         "description",
         "cover",
+        "display_label",
         "tags",
         "properties",
         "images",

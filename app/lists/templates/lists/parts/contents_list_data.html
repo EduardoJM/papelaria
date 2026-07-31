@@ -5,9 +5,14 @@
         {% for item in items %}
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 pb-5">
                 <a href="{% pageurl item %}" class="text-decoration-none" title="{{ item.title }}">
-                    <div class="d-flex flex-column align-items-stretch">
+                    <div class="d-flex flex-column align-items-stretch position-relative">
                         {% image item.specific.cover fill-425x600 as tmp_photo %}
                         <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" />
+                        {% if item.specific.display_label %}
+                            <span class="bg-primary text-black position-absolute p-2 rounded-2 fw-medium" style="right: 5px; top: 5px; font-size: 0.85rem;">
+                                {{item.specific.display_label}}
+                            </span>
+                        {% endif %}
                         <span class="fw-medium text-truncate text-white">{{ item.title }}</span>
                     </div>
                 </a>
