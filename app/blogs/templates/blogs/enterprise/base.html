@@ -23,7 +23,7 @@
           <div class="header-left">
             <h1>{{ root.header_text }}</h1>
           </div>
-          {% image root.header_image fill-400x400 as image %}
+          {% image root.header_image width-600 as image %}
           <img src="{{ image.url }}" alt="{{ image.alt }}" />
         </div>
       </header>

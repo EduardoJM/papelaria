@@ -122,7 +122,8 @@ nav.navbar > div > ul > li > ul > li a:hover {
   color: var(--header-fg-color);
 }
 .main-page-header header .header-inner img {
-  width: 30%;
+  margin-top: 32px;
+  width: 50%;
   height: auto;
 }
 /*
