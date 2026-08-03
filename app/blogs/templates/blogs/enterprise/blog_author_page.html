@@ -1,0 +1,15 @@
+{% extends 'blogs/enterprise/base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <div class="autor-card-container">
+    <div class="author-card">
+      <div class="left">
+        <h1>{{ page.author.name }}</h1>
+        <p>{{ page.summary }}</p>
+      </div>
+      {% image page.author.author_image fill-200x200 as img %}
+      <img src="{{ img.url }}" alt="{{ img.alt }}" />
+    </div>
+  </div>
+{% endblock %}

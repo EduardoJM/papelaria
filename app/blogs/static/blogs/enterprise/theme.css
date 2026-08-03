@@ -102,11 +102,28 @@ nav.navbar > div > ul > li > ul > li a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 440px;
+  justify-content: flex-end;
+  min-height: 340px;
 }
 .main-page-header header .header-inner {
   max-width: 1080px;
   width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+.main-page-header header .header-inner .header-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-page-header header .header-inner .header-left h1 {
+  color: var(--header-fg-color);
+}
+.main-page-header header .header-inner img {
+  width: 30%;
+  height: auto;
 }
 /*
  * Button
@@ -344,6 +361,18 @@ nav.navbar > div > ul > li > ul > li a:hover {
   font-weight: 500;
   font-size: 16px;
 }
+.main-content header.post-header .left .authors-row {
+  margin-top: 16px;
+  font-size: 14px;
+}
+.main-content header.post-header .left .authors-row a {
+  color: var(--header-fg-color);
+  font-weight: medium;
+}
+.main-content header.post-header .left .date-row {
+  margin-top: 8px;
+  font-size: 14px;
+}
 .main-content .post-body-wrapper {
   display: grid;
   grid-template-columns: 1fr 260px;
@@ -378,4 +407,42 @@ nav.navbar > div > ul > li > ul > li a:hover {
   margin-bottom: 32px;
   font-weight: 500;
   color: var(--header-bg-color);
+}
+.post-body ul,
+.post-body ol {
+  list-style-position: inside;
+}
+/*
+ * Author Page
+ */
+.autor-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.autor-card-container .author-card {
+  max-width: 1080px;
+  width: 100%;
+  margin-top: 64px;
+  background: var(--header-bg-color);
+  color: var(--header-fg-color);
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+.autor-card-container .author-card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 0 20px 20px 0;
+}
+.autor-card-container .author-card .left {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.autor-card-container .author-card .left h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
 }

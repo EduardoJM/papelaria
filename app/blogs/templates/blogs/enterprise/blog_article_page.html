@@ -17,7 +17,7 @@
               <p class="authors-row">
                 Publicado por
                 {% for item in authors %}
-                  <a href="#">
+                  <a href="{{ item.url }}">
                     {{item.name}}{% if not forloop.last %}, {% endif %}
                   </a>
                 {% endfor %}
@@ -41,7 +41,6 @@
           {{ page.body|richtext }}
         </article>
         <aside>
-          Q?
         </aside>
       </div>
     </div>

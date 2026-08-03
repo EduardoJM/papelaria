@@ -8,6 +8,7 @@ from wagtail.models import Page
 from wagtail.search import index
 from wagtail.fields import RichTextField
 from wagtailseo.models import SeoMixin, SeoType, TwitterCard
+from wagtail.templatetags.wagtailcore_tags import pageurl
 from taggit.models import TaggedItemBase
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
@@ -51,6 +52,25 @@ class BlogIndexPage(SeoMixin, Page):
         blank=True,
         default=''
     )
+    header_text = models.CharField(verbose_name="Texto do Cabeçalho", blank=True, default="")
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.SET_NULL,
+        verbose_name="Foto do Cabeçalho",
+        blank=True,
+        null=True,
+        related_name='header_images',
+        default=None
+    )
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.SET_NULL,
+        verbose_name="Logo",
+        blank=True,
+        null=True,
+        related_name='logos',
+        default=None
+    )
 
     content_panels = Page.content_panels + [
         "blog_style",
@@ -59,6 +79,9 @@ class BlogIndexPage(SeoMixin, Page):
         "featured_card_image",
         "featured_subtitle",
         "featured_link",
+        "header_text",
+        "header_image",
+        "logo",
     ]
 
     # SEO
@@ -141,6 +164,13 @@ class BlogAuthor(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def url(self):
+        if not hasattr(self, 'pages'):
+            return None
+        page = self.pages.first()
+        return pageurl({}, page)
 
     class Meta:
         verbose_name_plural = 'Authors'
@@ -250,12 +280,36 @@ class BlogAuthorPage(SeoMixin, Page):
     author = models.ForeignKey(
         BlogAuthor,
         on_delete=models.CASCADE,
-        verbose_name='Autor'
+        verbose_name='Autor',
+        related_name='pages'
+    )
+    summary = models.CharField(
+        verbose_name="Resumo",
+        max_length=250,
+        blank=True,
+        default=""
     )
 
-    content_panels = Page.content_panels + ['author']
+    content_panels = Page.content_panels + [
+        'author',
+        'summary',
+    ]
 
     # SEO
     promote_panels = SeoMixin.seo_panels
     seo_content_type = SeoType.ARTICLE
     seo_twitter_card = TwitterCard.LARGE
+
+    def get_template(self, request, *args, **kwargs):
+        site = self.get_site()
+        root = site.root_page
+        return "blogs/%s/%s.html" % (
+            root.specific.blog_style,
+            "blog_author_page"
+        )
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['disable_header'] = True
+        return context
+    

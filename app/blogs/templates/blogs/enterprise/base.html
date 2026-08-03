@@ -1,4 +1,4 @@
-{% load static %}
+{% load static blogs_utils wagtailimages_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,12 @@
     {% if not disable_header %}
       <header>
         <div class="header-inner">
-          
+          {% root_page page as root %}
+          <div class="header-left">
+            <h1>{{ root.header_text }}</h1>
+          </div>
+          {% image root.header_image fill-400x400 as image %}
+          <img src="{{ image.url }}" alt="{{ image.alt }}" />
         </div>
       </header>
     {% endif %}
