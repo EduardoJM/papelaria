@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<a href="{% pageurl post %}" class="post-card">
+  {% image post.specific.cover fill-400x250 as image %}
+  <img src="{{ image.url }}" alt="{{ image.alt }}" />
+  {% if post.specific.category %}
+    <span class="post-category">{{post.specific.category.name}}</span>
+  {% endif %}
+  <div class="post-card-inner">
+    <h3>{{ post.title }}</h3>
+    <div class="description">
+      {{ post.specific.intro|richtext }}
+    </div>
+  </div>
+</a>

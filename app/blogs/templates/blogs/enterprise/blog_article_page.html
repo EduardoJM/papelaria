@@ -1,0 +1,48 @@
+{% extends 'blogs/enterprise/base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <div class="main-content">
+    <div class="main-content-inner">
+      <header class="post-header">
+        <div class="left">
+          {% if page.category %}
+            <a href="/?category={{page.category.name}}" class="tag">
+              {{page.category.name}}
+            </a>
+          {% endif %}
+          <h1>{{ page.title }}</h1>
+          {% with authors=page.authors.all %}
+            {% if authors %}
+              <p class="authors-row">
+                Publicado por
+                {% for item in authors %}
+                  <a href="{{ item.url }}">
+                    {{item.name}}{% if not forloop.last %}, {% endif %}
+                  </a>
+                {% endfor %}
+              </p>
+            {% endif %}
+          {% endwith %}
+          <p class="date-row">
+            Publicado em {{ page.date }}
+          </p>
+        </div>
+        {% if page.cover %}
+          <div class="right">
+            {% image page.cover fill-300x200 as image %}
+            <img src="{{ image.url }}" alt="{{ image.alt }}" />
+          </div>
+        {% endif %}
+      </header>
+
+      <div class="post-body-wrapper">
+        <article class="post-body">
+          {{ page.body|richtext }}
+        </article>
+        <aside>
+        </aside>
+      </div>
+    </div>
+  </div>
+{% endblock %}

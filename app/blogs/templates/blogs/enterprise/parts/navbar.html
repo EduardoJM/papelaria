@@ -1,0 +1,54 @@
+{% load wagtailcore_tags blogs_menu %}
+<nav class="navbar">
+  <div>
+    <a class="brand" href="/">
+      <img src="{% menu_logo page %}" alt="Menu Logo" />
+    </a>
+    {% menu_items page as menu %}
+    <ul>
+      {% for item in menu %}
+        {% with childs=item.specific.submenus %}
+          <li>
+            <a 
+              {% if item.specific.page %}
+                  href="{% pageurl item.specific.page %}{{ item.specific.page_extra }}"
+              {% else %}
+                  {% if item.specific.external_link %}
+                      href="{{ item.specific.external_link }}"
+                  {% endif %}
+              {% endif %}
+            >
+              {{ item.title }}
+              {% if childs %}
+                <i data-lucide="chevron-down"></i>
+              {% endif %}
+            </a>
+            {% if childs %}
+              <ul>
+                {% for item in childs %}
+                  <li>
+                    <a
+                      {% if item.specific.page %}
+                          href="{% pageurl item.specific.page %}{{ item.specific.page_extra }}"
+                      {% else %}
+                          {% if item.specific.external_link %}
+                              href="{{ item.specific.external_link }}"
+                          {% endif %}
+                      {% endif %}
+                    >
+                      {{ item.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endwith %}
+      {% endfor %}
+    </ul>
+    
+    <a href="#" class="button">
+      Experimente o Sistema
+    </a>
+  </div>
+</nav>

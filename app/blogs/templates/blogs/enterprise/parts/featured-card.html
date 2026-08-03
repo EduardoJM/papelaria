@@ -1,0 +1,14 @@
+{% load wagtailimages_tags %}
+<div class="featured-card-container">
+  <div class="featured-card">
+    {% image page.featured_card_image original as cover %}
+    <span></span>
+    <span class="text1">{{page.featured_title}}</span>
+    <img src="{{ cover.url }}" />
+    <span class="text2">{{page.featured_subtitle}}</span>
+    <a href="{{page.featured_link}}" class="button" target="_blank">
+      Saiba mais <i data-lucide="arrow-right"></i>
+    </a>
+    <span></span>
+  </div>
+</div>
