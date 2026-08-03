@@ -30,6 +30,7 @@ services:
       - cms
     volumes:
       - ./app/core:/app/core
+      - ./app/blogs:/app/blogs
       - ./app/lists:/app/lists
       - ./app/sites:/app/sites
       - ./media:/media

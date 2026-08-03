@@ -1,0 +1,33 @@
+<div class="pagination">
+  {% if articles.has_previous %}
+    <a class="previous" href="?page={{ articles.previous_page_number }}">
+      <i data-lucide="chevron-left"></i>
+    </a>
+  {% else %}
+    <button type="button" class="previous disabled" disabled>
+      <i data-lucide="chevron-left"></i>
+    </button>
+  {% endif %}
+
+  {% for page_num in articles.paginator.page_range %}
+    {% if page_num == articles.number %}
+      <button type="button" class="btn-page active" disabled>
+        {{ page_num }}
+      </button>
+    {% else %}
+      <a class="btn-page" href="?page={{ page_num }}">
+        {{ page_num }}
+      </a>
+    {% endif %}
+  {% endfor %}
+
+  {% if articles.has_next %}
+    <a class="next" href="?page={{ articles.next_page_number }}">
+      <i data-lucide="chevron-right"></i>
+    </a>
+  {% else %}
+    <button type="button" class="next disabled" disabled>
+      <i data-lucide="chevron-right"></i>
+    </button>
+  {% endif %}
+</div>

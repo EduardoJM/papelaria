@@ -1,0 +1,32 @@
+{% extends 'blogs/enterprise/base.html' %}
+
+{% block content %}
+  {% if featured_articles %}
+    <div class="featured-posts-container">
+      <div class="featured-posts">
+        <div class="posts">
+          {% for post in featured_articles %}
+            {% include 'blogs/enterprise/parts/post-card.html' %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="separator"><div class="box"></div></div>
+
+    {% include 'blogs/enterprise/parts/featured-card.html' %}
+  {% endif %}
+
+  <div class="featured-posts-container">
+    <div class="featured-posts">
+      <div class="posts">
+        {% for post in articles %}
+          {% include 'blogs/enterprise/parts/post-card.html' %}
+        {% endfor %}
+      </div>
+
+      {% include 'blogs/enterprise/parts/pagination.html' %}
+    </div>
+  </div>
+
+{% endblock %}

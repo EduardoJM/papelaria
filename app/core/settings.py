@@ -21,6 +21,7 @@ if env("CSRF_TRUSTED_ORIGINS"):
 
 INSTALLED_APPS = [
     "sites.ardoli",
+    "blogs",
     "lists",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
