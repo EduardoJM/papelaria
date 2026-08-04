@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "sites.ardoli",
     "blogs",
     "lists",
+    "core.robots",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
