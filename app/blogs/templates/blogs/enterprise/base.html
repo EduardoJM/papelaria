@@ -39,6 +39,15 @@
   <script>
     lucide.createIcons();
   </script>
+  <script>
+    document.querySelector('nav.navbar .btn-toggle').addEventListener('click', function(){
+      const el = document.querySelector('nav.navbar > div > ul');
+      if (!el) {
+        return;
+      }
+      el.classList.toggle('mobile-hidden', !el.classList.contains('mobile-hidden'));
+    })
+  </script>
   {% block extrascripts %}{% endblock %}
 </body>
 </html>
