@@ -6,15 +6,15 @@
 body {
   font-family: "Inter", sans-serif;
 
-  --header-bg-color: rgb(0 56 229);
+  --header-bg-color: #3a40ff;
   --header-fg-color: #fff;
   --header-btn-bg-color: rgb(72 138 245);
   --header-btn-fg-color: #fff;
   --header-btn-hover-bg-color: rgb(2, 12, 68);
   --popup-bg: #fff;
   --popup-fg: #222;
-  --popup-fg-hover: rgb(0 56 229);
-  --post-card-title-color: rgb(0 56 229);
+  --popup-fg-hover: #3a40ff;
+  --post-card-title-color: #3a40ff;
   --post-card-description-color: #222;
 }
 .main-page-header {
