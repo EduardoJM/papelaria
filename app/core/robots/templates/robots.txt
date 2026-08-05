@@ -1,5 +1,5 @@
-User-Agent: *
+{% load wagtailcore_tags %}User-Agent: *
 Disallow: /admin/
 
-# Sitemap files
-Sitemap: {{ request.site.root_url }}/sitemap.xml
+{% wagtail_site as current_site %}# Sitemap files
+Sitemap: {{ current_site.root_url }}/sitemap.xml
