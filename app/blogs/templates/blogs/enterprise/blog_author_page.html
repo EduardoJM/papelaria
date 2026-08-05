@@ -9,7 +9,7 @@
         <p>{{ page.summary }}</p>
       </div>
       {% image page.author.author_image fill-200x200 as img %}
-      <img src="{{ img.url }}" alt="{{ img.alt }}" />
+      <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy" />
     </div>
   </div>
 {% endblock %}

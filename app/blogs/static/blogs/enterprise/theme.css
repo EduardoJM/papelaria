@@ -17,6 +17,14 @@ body {
   --post-card-title-color: #3a40ff;
   --post-card-description-color: #222;
 }
+.sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
 .main-page-header {
   background-color: var(--header-bg-color);
   display: flex;

@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <a href="{% pageurl post %}" class="post-card">
   {% image post.specific.cover fill-400x250 as image %}
-  <img src="{{ image.url }}" alt="{{ image.alt }}" />
+  <img src="{{ image.url }}" alt="{{ image.alt }}" loading="lazy" />
   {% if post.specific.category %}
     <span class="post-category">{{post.specific.category.name}}</span>
   {% endif %}

@@ -31,7 +31,7 @@
         {% if page.cover %}
           <div class="right">
             {% image page.cover fill-300x200 as image %}
-            <img src="{{ image.url }}" alt="{{ image.alt }}" />
+            <img src="{{ image.url }}" alt="{{ image.alt }}" loading="lazy" />
           </div>
         {% endif %}
       </header>

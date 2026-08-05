@@ -2,10 +2,12 @@
   {% if articles.has_previous %}
     <a class="previous" href="?page={{ articles.previous_page_number }}">
       <i data-lucide="chevron-left"></i>
+      <span class="sr-only">Página anterior</span>
     </a>
   {% else %}
     <button type="button" class="previous disabled" disabled>
       <i data-lucide="chevron-left"></i>
+      <span class="sr-only">Página anterior</span>
     </button>
   {% endif %}
 
@@ -24,10 +26,12 @@
   {% if articles.has_next %}
     <a class="next" href="?page={{ articles.next_page_number }}">
       <i data-lucide="chevron-right"></i>
+      <span class="sr-only">Próxima página</span>
     </a>
   {% else %}
     <button type="button" class="next disabled" disabled>
       <i data-lucide="chevron-right"></i>
+      <span class="sr-only">Próxima página</span>
     </button>
   {% endif %}
 </div>

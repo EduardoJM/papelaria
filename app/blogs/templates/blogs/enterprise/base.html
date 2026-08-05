@@ -24,7 +24,7 @@
             <h1>{{ root.header_text }}</h1>
           </div>
           {% image root.header_image width-600 as image %}
-          <img src="{{ image.url }}" alt="{{ image.alt }}" />
+          <img src="{{ image.url }}" alt="{{ image.alt }}" loading="lazy" />
         </div>
       </header>
     {% endif %}
