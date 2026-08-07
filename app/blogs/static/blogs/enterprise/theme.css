@@ -508,6 +508,10 @@ nav.navbar > div > ul > li > ul > li a:hover {
 .post-body ol {
   list-style-position: inside;
 }
+.post-body img {
+  max-width: 100%;
+  height: auto;
+}
 /*
  * Author Page
  */
