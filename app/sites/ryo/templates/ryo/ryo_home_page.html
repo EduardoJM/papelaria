@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{page.title}}</title>
+    <link rel="stylesheet" href="{% static 'ryo/css/theme.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    {% include "wagtailseo/meta.html" %}
+  </head>
+
+  <body>
+    {% include 'ryo/parts/navbar.html' %}
+    <header>
+      <div class="h-100 w-100">
+        <div class="container h-100">
+          <div class="row h-100 w-100">
+            <div class="col-8 d-flex flex-column align-items-stretch justify-content-center">
+              <div class="content-region d-flex flex-column align-items-stretch justify-content-center text-white">
+                <h1 class="mb-3">Comece a gerenciar<br/><strong class="text-destak">seu negócio</strong> agora mesmo</h1>
+
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  Gestão de clientes
+                </span>
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  Gestão de vendas
+                </span>
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  Gestão de cashbacks
+                </span>
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  e muito mais...
+                </span>
+              </div>
+            </div>
+            <div class="col-4 image-region">
+              <img src="{% static 'ryo/images/business-woman.webp' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container pt-5 mt-5">
+        {% include 'ryo/sections/cashbacks.html' %}
+
+        {% include 'ryo/sections/purchases.html' %}
+
+        {% include 'ryo/sections/customers.html' %}
+      </div>
+
+      {% include 'ryo/sections/demonstration.html' %}
+
+      <div class="container">
+        {% include 'ryo/sections/faq.html' %}
+
+        <section class="mb-5 rounded-5" style="background-color: #eee;">
+          <div class="row">
+            <div class="col-8 p-5 d-flex flex-column align-items-stretch justify-content-center">
+              <h1>Se você chegou até aqui</h1>
+              <h2 class="fs-4 fw-normal">É porque tá interessado. Vamos lá, comece a gerir o seu negócio hoje mesmo.</h2>
+              <div class="pt-3">
+                <a href="#" class="btn btn-primary">
+                  Criar minha conta 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="col-4">
+              {% include 'ryo/parts/typing_notebook.html' %}
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="p-2 pt-5">
+      <div class="container pb-5">
+        <div class="row">
+          <div class="col-3">
+            <h3>Conta</h3>
+            <ul>
+              <li><a href="#">Cadastre-se</a></li>
+              <li><a href="#">Login</a></li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <h3>Suporte</h3>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Artigos de ajuda</a></li>
+              <li><a href="#">Falar com suporte</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container d-flex align-items-center justify-content-center py-5">
+        {% with color='#fff' width=180 %}
+          {% include 'ryo/parts/logo.html' %}
+        {% endwith %}
+      </div>
+
+      <div class="p-2">
+        <div class="row ">
+          <div class="col-12">
+            <div class="text-center">
+              Copyright © 2026 <a href="https://ardoli.com.br">Ardoli Tecnologia LTDA</a> - CNPJ: 45.186.204/0001-05
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    {% include "wagtailseo/struct_data.html" %}
+    {% include "wagtailseo/struct_org_data.html" %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>    
+  </body>
+</html>
