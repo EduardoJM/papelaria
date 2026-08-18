@@ -2,7 +2,9 @@
   <div class="container">
     <a class="navbar-brand" href="#">
       {% with color='#fff' width=150 %}
-        {% include 'ryo/parts/logo.html' %}
+        <span style="font-family: 'Oxanium', sans-serif; font-size: 38px; font-weight: normal;">
+          ryo.crm
+        </span>
       {% endwith %}
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,25 +16,23 @@
           <a class="nav-link" aria-current="page" href="#">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#funcionalidades">Funcionalidades</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="#demonstracao">Demonstração</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://blog.ryo.app.br">Blog</a>
         </li>
       </ul>
       <div class="d-flex flex-row align-items-center gap-3">
-        <a href="#" class="btn btn-cta btn-cta-white-transparent">
+        <a href="https://dash.ryo.app.br/auth/login" class="btn btn-cta btn-cta-white-transparent">
           Acessar minha conta
         </a>
-        <a href="#" class="btn btn-cta btn-cta-white-outline">
+        <a href="https://dash.ryo.app.br/auth/signup" class="btn btn-cta btn-cta-white-outline">
           Criar conta grátis
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>

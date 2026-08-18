@@ -3,7 +3,14 @@ body {
   --brand-fg-color: #fff;
   --destak-bg-color: #fdf736;
 
+  --header-height: 130px;
+
   --gray-bg-color: rgb(242, 245, 251);
+}
+@media (max-width: 992px) {
+  body {
+    padding-top: 80px;
+  }
 }
 .bg-brand {
   background-color: var(--brand-bg-color);
@@ -30,14 +37,16 @@ body {
 .btn-cta {
   border-radius: 40px !important;
   border: 2px solid transparent !important;
-  display: flex !important;
+  display: inline-flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center;
   gap: 5px !important;
   padding: 10px 20px !important;
+  font-weight: 500 !important;
 }
 .btn-cta-white-outline {
+  color: #fff !important;
   border-color: #fff !important;
   background-color: transparent !important;
   transition: all 0.3s ease-in;
@@ -67,13 +76,16 @@ body {
  * HEADER
  */
 header {
-  height: 750px;
+  min-height: 750px;
   background: var(--brand-bg-color);
   display: flex;
   align-items: stretch;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 header .image-region {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,10 +164,25 @@ header .content-region .list-item svg {
   top: 25%;
   left: 10%;
 }
+@media (max-width: 1400px) {
+  .box-purchase {
+    top: 15%;
+  }
+}
+@media (max-width: 1200px) {
+  .box-purchase {
+    top: 5%;
+  }
+}
 .box-cashbacks {
   position: absolute;
   right: -10%;
   bottom: 5%;
+}
+@media (max-width: 768px) {
+  .box-cashbacks {
+    right: 0%;
+  }
 }
 .box-customers {
   position: absolute;
@@ -167,6 +194,12 @@ header .content-region .list-item svg {
   right: 10%;
   top: 10%;
 }
+@media (max-width: 768px) {
+  .box-cashbackvalues {
+    right: 2%;
+    top: 0%;
+  }
+}
 .box-customerscontact {
   position: absolute;
   right: 5%;
@@ -175,4 +208,44 @@ header .content-region .list-item svg {
 
 .section-full {
   height: 700px;
+}
+
+.accordion#faq {
+  --bs-accordion-border-color: var(--gray-bg-color);
+  --bs-accordion-border-radius: 0px;
+  --bs-accordion-inner-border-radius: 0px;
+  --bs-accordion-btn-icon: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tcmlnaHQtaWNvbiBsdWNpZGUtY2hldnJvbi1yaWdodCI+PHBhdGggZD0ibTkgMTggNi02LTYtNiIvPjwvc3ZnPg==);
+  --bs-accordion-btn-icon-transform: rotate(90deg);
+  --bs-accordion-btn-active-icon: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tcmlnaHQtaWNvbiBsdWNpZGUtY2hldnJvbi1yaWdodCI+PHBhdGggZD0ibTkgMTggNi02LTYtNiIvPjwvc3ZnPg==);
+  --bs-accordion-active-bg: var(--brand-bg-color);
+  --bs-accordion-active-color: var(--brand-fg-color);
+  --bs-accordion-bg: #c4c7ff;
+  --bs-accordion-btn-bg: #fff;
+}
+.accordion#faq .accordion-button {
+  font-weight: 500 !important;
+}
+
+
+footer {
+  background: #111;
+  color: #fff;
+}
+footer .footer-copy {
+  background: #000;
+}
+footer a {
+  color: var(--brand-bg-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+section[id] {
+  padding-top: var(--header-height); /* Space for header */
+  margin-top: calc(-1 * var(--header-height)); /* Offset padding */
 }
