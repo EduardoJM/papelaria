@@ -21,6 +21,7 @@ if env("CSRF_TRUSTED_ORIGINS"):
 
 INSTALLED_APPS = [
     "sites.ardoli",
+    "sites.ryo",
     "blogs",
     "lists",
     "core.robots",

@@ -1,0 +1,145 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'ryo/css/theme.css' %}" />
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'ryo/favicon-96x96.png' %}" />
+    <link rel="icon" href="{% static 'ryo/favicon.svg' %}" type="image/svg+xml" sizes="any" />
+    <link rel="icon" href="{% static 'ryo/favicon.ico' %}" />
+    <link rel="apple-touch-icon" href="{% static 'ryo/apple-touch-icon.png' %}" />
+    <link rel="manifest" href="{% static 'ryo/site.webmanifest' %}" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    {% include "wagtailseo/meta.html" %}
+  </head>
+
+  <body>
+    {% include 'ryo/parts/navbar.html' %}
+    <header style="overflow: hidden;">
+      <div class="flex-fill d-flex flex-column align-items-stretch">
+        <div class="container flex-fill d-flex flex-column align-items-stretch">
+          <div class="flex-fill d-flex flex-column flex-lg-row align-items-stretch">
+            <div class="flex-fill d-flex flex-column align-items-stretch justify-content-center">
+              <div class="content-region d-flex flex-column align-items-stretch justify-content-center text-white">
+                <h1 class="mb-3">Comece a gerenciar<br/><strong class="text-destak">seu negócio</strong> agora mesmo</h1>
+
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  Gestão de clientes
+                </span>
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  Gestão de vendas
+                </span>
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  Gestão de cashbacks
+                </span>
+                <span class="list-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  e muito mais...
+                </span>
+              </div>
+            </div>
+            <div class="image-region">
+              <img src="{% static 'ryo/images/business-woman.webp' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container pt-5 mt-5">
+        {% include 'ryo/sections/cashbacks.html' %}
+
+        {% include 'ryo/sections/purchases.html' %}
+
+        {% include 'ryo/sections/customers.html' %}
+      </div>
+
+      {% include 'ryo/sections/demonstration.html' %}
+
+      <div class="container">
+        {% include 'ryo/sections/faq.html' %}
+
+        <section class="mb-5 rounded-5 bg-brand text-white">
+          <div class="row">
+            <div class="col-12 col-md-8 p-5 d-flex flex-column align-items-stretch justify-content-center">
+              <h1>Se você chegou até aqui</h1>
+              <h2 class="fs-4 fw-normal">É porque tá interessado. Vamos lá, comece a gerir o seu negócio hoje mesmo.</h2>
+              <div class="pt-3 flex flex-column align-items-start">
+                <a href="https://dash.ryo.app.br/auth/signup" class="btn btn-cta btn-cta-white-outline">
+                  Criar minha conta 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              {% include 'ryo/parts/typing_notebook.html' %}
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="flex flex-column align-items-stretch">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-12 mb-5 col-md-3">
+            <h3>Conta</h3>
+            <ul>
+              <li><a href="#">Cadastre-se</a></li>
+              <li><a href="#">Login</a></li>
+            </ul>
+          </div>
+          <div class="col-12 mb-5 col-md-3">
+            <h3>Suporte</h3>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Artigos de ajuda</a></li>
+              <li><a href="#">Falar com suporte</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container d-flex align-items-center justify-content-center py-5">
+        <span style="font-family: 'Oxanium', sans-serif; font-size: 38px; font-weight: normal;">
+          ryo.crm
+        </span>
+      </div>
+
+      <div class="p-4 footer-copy">
+        <div class="text-center">
+          Copyright © 2026 <a href="https://ardoli.com.br">Ardoli Tecnologia LTDA</a> - CNPJ: 45.186.204/0001-05
+        </div>
+      </div>
+    </footer>
+
+    {% include "wagtailseo/struct_data.html" %}
+    {% include "wagtailseo/struct_org_data.html" %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>    
+  </body>
+</html>

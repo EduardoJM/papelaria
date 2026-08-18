@@ -1,0 +1,55 @@
+{% load static %}
+<section class="mb-5 pt-5">
+  <div class="row rounded-4 bg-gray shadow">
+    <div class="col-12 col-md-6 col-lg-4 d-flex ps-5 flex-column align-items-start justify-content-center">
+      <div class="py-5">
+        <h2 class="fs-1 text-brand fw-bold">Vendas realizadas</h2>
+        <p>Tenha total controle sobre suas vendas, uma vez que elas serão registradas para a criação dos cashback's.</p>
+        <div class="mt-5 mb-5 pb-5 mb-lg-0 pb-lg-0">
+          <a href="https://dash.ryo.app.br/auth/signup" class="btn btn-cta btn-cta-brand">
+            Começar agora
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-xl-block col-2"></div>
+    <div class="col-12 col-md-6 col-lg-8 col-xl-6 cards-region d-flex align-items-end">
+      <img style="width: 100%; margin-top: -50px;" src="{% static 'ryo/images/business-man.webp' %}" />
+
+      <span class="box-customers card-glass">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+        </span>
+        <div class="fw-medium mb-3">Organize seu Faturamento</div>
+        <div class="items">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Saiba quanto faturou
+          </span>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Separe por categorias
+          </span>
+        </div>
+      </span>
+
+      <span class="box-cashbackvalues card-glass">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-bar-stacked-icon lucide-chart-bar-stacked"><path d="M11 13v4"/><path d="M15 5v4"/><path d="M3 3v16a2 2 0 0 0 2 2h16"/><rect x="7" y="13" width="9" height="4" rx="1"/><rect x="7" y="5" width="12" height="4" rx="1"/></svg>
+        </span>
+        <div class="fw-medium mb-3">Transparência</div>
+        <div class="items">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Saiba quanto investiu
+          </span>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Saiba seu retorno
+          </span>
+        </div>
+      </span>
+    </div>
+  </div>
+</section>
