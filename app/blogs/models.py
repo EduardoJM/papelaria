@@ -1,10 +1,9 @@
 from django import forms
 from django.db import models
-from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from wagtail.snippets.models import register_snippet
 from wagtail.admin.panels import MultiFieldPanel, FieldPanel
-from wagtail.models import Page
+from wagtail.models import Page, Site
 from wagtail.search import index
 from wagtail.fields import RichTextField
 from wagtailseo.models import SeoMixin, SeoType, TwitterCard
@@ -238,7 +237,21 @@ class BlogArticlePage(SeoMixin, Page):
         context['disable_header'] = True
         return context
 
-class BlogMenuLink(Page):
+@register_snippet
+class BlogMenuLink(models.Model):
+    site = models.ForeignKey(
+        Site,
+        on_delete=models.CASCADE,
+    )
+    label = models.CharField("Label", max_length=150)
+    parent = models.ForeignKey(
+        "blogs.BlogMenuLink",
+        on_delete=models.CASCADE,
+        verbose_name="Superior",
+        blank=True,
+        null=True,
+        default=None
+    )
     page = models.ForeignKey(
         Page,
         on_delete=models.PROTECT,
@@ -250,25 +263,14 @@ class BlogMenuLink(Page):
     page_extra = models.CharField("Extra URL", max_length=250, blank=True, default="")
     external_link = models.URLField("Link Externo", blank=True, null=True)
 
-    content_panels = Page.content_panels + ["page", "page_extra", "external_link"]
+    panels = ["site", "label", "page", "page_extra", "external_link", "parent"]
+
+    def __str__(self):
+        return self.label
 
     @property
     def submenus(self):
-        menus = (
-            self.get_children()
-            .type(BlogMenuLink)
-            .live()
-        )
-        return menus
-
-    def serve(self, request, *args, **kwargs):
-        if self.page:
-            url = self.page.get_url(request)
-            extra = self.page_extra or ""
-            return redirect(url + extra)
-        elif self.external_link:
-            return redirect(self.external_link)
-        return redirect('/')
+        return BlogMenuLink.objects.filter(parent=self)
 
 class BlogAuthorsListPage(SeoMixin, Page):
     # SEO

@@ -12,18 +12,18 @@
     {% menu_items page as menu %}
     <ul class="mobile-hidden">
       {% for item in menu %}
-        {% with childs=item.specific.submenus %}
+        {% with childs=item.submenus %}
           <li>
             <a 
-              {% if item.specific.page %}
-                  href="{% pageurl item.specific.page %}{{ item.specific.page_extra }}"
+              {% if item.page %}
+                  href="{% pageurl item.page %}{{ item.page_extra }}"
               {% else %}
-                  {% if item.specific.external_link %}
-                      href="{{ item.specific.external_link }}"
+                  {% if item.external_link %}
+                      href="{{ item.external_link }}"
                   {% endif %}
               {% endif %}
             >
-              {{ item.title }}
+              {{ item.label }}
               {% if childs %}
                 <i data-lucide="chevron-down"></i>
               {% endif %}
@@ -33,15 +33,15 @@
                 {% for item in childs %}
                   <li>
                     <a
-                      {% if item.specific.page %}
-                          href="{% pageurl item.specific.page %}{{ item.specific.page_extra }}"
+                      {% if item.page %}
+                          href="{% pageurl item.page %}{{ item.page_extra }}"
                       {% else %}
-                          {% if item.specific.external_link %}
-                              href="{{ item.specific.external_link }}"
+                          {% if item.external_link %}
+                              href="{{ item.external_link }}"
                           {% endif %}
                       {% endif %}
                     >
-                      {{ item.title }}
+                      {{ item.label }}
                     </a>
                   </li>
                 {% endfor %}
