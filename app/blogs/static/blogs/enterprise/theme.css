@@ -449,7 +449,7 @@ nav.navbar > div > ul > li > ul > li a:hover {
 }
 .main-content .post-body-wrapper {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: 1fr 300px;
   gap: 32px;
 }
 @media (max-width: 768px) {
@@ -545,4 +545,60 @@ nav.navbar > div > ul > li > ul > li a:hover {
 .autor-card-container .author-card .left h1 {
   font-size: 32px;
   margin-bottom: 16px;
+}
+
+
+.article-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-decoration: none;
+
+  position: sticky;
+  top: 32px;
+
+  background-color: var(--header-bg-color);
+  color: var(--header-fg-color);
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  overflow: hidden;
+
+  margin-bottom: 32px;
+}
+.article-aside .header {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.article-aside .message {
+  padding: 0 16px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.article-aside .image {
+  height: 280px;
+  background-image: url(./sales-woman.webp);
+  background-position: bottom center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.article-aside .image .overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,rgba(22, 25, 100, 0) 0%, rgba(22, 25, 100, 0) 34%, rgba(22, 25, 100, 1) 100%);
+}
+.article-aside .footer {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
 }
